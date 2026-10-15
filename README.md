@@ -15,6 +15,23 @@ npm run preview  # cek hasil build
 ## Deploy (Netlify)
 Build command `npm run build`, publish directory `dist` (sudah diatur di `netlify.toml`).
 
+## Arcade (easter egg)
+Konami code (↑ ↑ ↓ ↓ ← → ← → B A) atau perintah `games` / `play <nama>` di terminal membuka **itsfirrr arcade**:
+
+| id | Game | Tema |
+|---|---|---|
+| `kasir` | Kasir Rush | WarPro: hitung kembalian sebelum pelanggan kabur |
+| `pnl` | PNL Trader | Kalender PNL: BUY/SELL candle, 7 hari trading |
+| `bughunt` | Bug Hunt | Pencet bug sebelum lolos ke production |
+| `typer` | Vibe Typer | Adu cepat mengetik kode vs AI |
+| `roulette` | Prompt Roulette | Pilih prompt perbaikan bug yang benar |
+| `runner` | Packet Runner | Endless runner bertema jaringan |
+| `snake` | Snake | Klasik |
+| `2048` | 2048 | Klasik |
+| `mines` | Minesweeper | Klasik |
+
+Konten game (barang warung, snippet kode, soal kuis) ada di `src/data/arcade.js`; daftar game di `src/data/games.js`. Skor tertinggi disimpan di localStorage pengunjung.
+
 ## Catatan Keputusan
 - Tailwind v4 dipasang via `@tailwindcss/vite`; styling utama memakai CSS kustom berbasis design tokens (`src/styles/main.css`) karena komponen bertema terminal lebih rapi sebagai kelas semantik. Token juga diekspos ke `@theme` Tailwind.
 - Token `--muted` dinaikkan sedikit dari `#6f869b` ke `#7d93a8` agar kontras teks kecil di atas `--panel` tetap >= 4.5:1.
@@ -31,3 +48,6 @@ Build command `npm run build`, publish directory `dist` (sudah diatur di `netlif
 - Modul editor vibe coding, cursor glow, dan Konami dimuat sebagai chunk terpisah (dynamic import saat idle/mendekati viewport) untuk menekan Total Blocking Time. Terminal tetap dimuat langsung agar form tidak pernah submit sebelum handler siap.
 - Lighthouse mobile (lokal, `vite preview`): Performance 92–95, Accessibility 100, Best Practices 100, SEO 92 (canonical masih `TODO_DOMAIN_URL`).
 - Fase 10 (push GitHub & hubungkan Netlify) sengaja tidak dijalankan; dikerjakan oleh pemilik repo.
+- Arcade dan tiap game di-import dinamis (chunk terpisah), jadi tidak menambah bundle awal kecuali metadata kecil di terminal.
+- Pilihan game klasik tidak dirinci, jadi dipilih Snake, 2048, dan Minesweeper karena ringan dan enak dimainkan di layar sentuh.
+- Konami di-nonaktifkan saat arcade terbuka supaya tombol panah game tidak memicunya lagi.

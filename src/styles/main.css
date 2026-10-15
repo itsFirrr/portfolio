@@ -1407,6 +1407,763 @@ kbd {
   font-size: 0.75rem;
 }
 
+/* ============ Arcade (minigame easter egg) ============ */
+.arcade {
+  position: fixed;
+  inset: 0;
+  z-index: 85;
+  display: grid;
+  place-items: center;
+  padding: var(--s-3);
+}
+
+.arcade[hidden] {
+  display: none;
+}
+
+.arcade__backdrop {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.arcade__dialog {
+  position: relative;
+  /* Tanpa ligatur: => dan -> harus tampil apa adanya saat mengetik kode */
+  font-variant-ligatures: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 760px;
+  max-height: calc(100vh - var(--s-6));
+  max-height: calc(100dvh - var(--s-6));
+  border-color: var(--accent);
+  box-shadow: var(--glow-accent);
+}
+
+.arcade__dialog:focus {
+  outline: none;
+}
+
+.arcade__hud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2) var(--s-4);
+  padding: var(--s-2) var(--s-4);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+.arcade__hud[hidden] {
+  display: none;
+}
+
+.arcade__back {
+  min-height: 36px;
+  padding: 0 var(--s-3);
+  font: inherit;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.arcade__game-title {
+  font-weight: 700;
+  margin-right: auto;
+}
+
+.arcade__score b,
+.arcade__best b {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.arcade__body {
+  position: relative;
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--s-4);
+}
+
+.arcade__intro {
+  margin-bottom: var(--s-4);
+  font-size: 0.9rem;
+}
+
+.arcade__menu {
+  display: grid;
+  gap: var(--s-3);
+}
+
+@media (min-width: 560px) {
+  .arcade__menu {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 760px) {
+  .arcade__menu {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.arcade__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  width: 100%;
+  height: 100%;
+  padding: var(--s-4);
+  font: inherit;
+  text-align: left;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s var(--ease);
+}
+
+.arcade__card:hover,
+.arcade__card:focus-visible {
+  border-color: var(--accent);
+  box-shadow: var(--glow-accent);
+  transform: translateY(-2px);
+}
+
+.arcade__tag {
+  align-self: flex-start;
+  padding: 0 var(--s-2);
+  font-size: 0.7rem;
+  color: var(--accent-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.arcade__card-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.arcade__card-desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.arcade__card-best {
+  margin-top: auto;
+  padding-top: var(--s-2);
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+
+.arcade__stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-3);
+  min-height: 260px;
+}
+
+.arcade__stage:focus {
+  outline: none;
+}
+
+.arcade__canvas {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  touch-action: none;
+}
+
+.arcade__help {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.arcade__loading {
+  text-align: center;
+}
+
+.arcade__over {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  padding: var(--s-4);
+  text-align: center;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  border-radius: var(--radius);
+}
+
+.arcade__over-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.arcade__over-actions {
+  display: flex;
+  gap: var(--s-3);
+}
+
+.arcade__toast {
+  position: absolute;
+  top: var(--s-2);
+  padding: var(--s-2) var(--s-4);
+  color: var(--bg);
+  background: var(--accent);
+  border-radius: var(--radius);
+  font-weight: 700;
+}
+
+.arcade__pad {
+  display: grid;
+  grid-template-areas:
+    '. up .'
+    'left down right';
+  gap: var(--s-2);
+}
+
+.arcade__pad button,
+.kasir__keys button {
+  min-width: 52px;
+  min-height: 48px;
+  font: inherit;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.arcade__pad button:active,
+.kasir__keys button:active {
+  background: var(--accent-soft);
+}
+
+.arcade__pad [data-dir='up'] {
+  grid-area: up;
+}
+
+.arcade__pad [data-dir='left'] {
+  grid-area: left;
+}
+
+.arcade__pad [data-dir='down'] {
+  grid-area: down;
+}
+
+.arcade__pad [data-dir='right'] {
+  grid-area: right;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .arcade__pad {
+    display: none;
+  }
+}
+
+/* 2048 */
+.g2048 {
+  display: grid;
+  gap: var(--s-2);
+  width: min(100%, 360px);
+  padding: var(--s-2);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  touch-action: none;
+}
+
+.g2048__row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-2);
+}
+
+.g2048__cell {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  font-size: clamp(1rem, 5vw, 1.5rem);
+  font-weight: 700;
+  background: var(--panel);
+  border-radius: 6px;
+}
+
+.g2048__cell[data-v='2'],
+.g2048__cell[data-v='4'] {
+  color: var(--text);
+  background: color-mix(in srgb, var(--neon-cyan) 12%, var(--panel));
+}
+
+.g2048__cell[data-v='8'],
+.g2048__cell[data-v='16'] {
+  color: var(--bg);
+  background: color-mix(in srgb, var(--neon-cyan) 70%, var(--panel));
+}
+
+.g2048__cell[data-v='32'],
+.g2048__cell[data-v='64'] {
+  color: var(--bg);
+  background: var(--neon-green);
+}
+
+.g2048__cell[data-v='128'],
+.g2048__cell[data-v='256'],
+.g2048__cell[data-v='512'] {
+  color: var(--bg);
+  background: var(--warn);
+  font-size: clamp(0.9rem, 4vw, 1.25rem);
+}
+
+.g2048__cell[data-v='1024'],
+.g2048__cell[data-v='2048'],
+.g2048__cell[data-v='4096'] {
+  color: var(--bg);
+  background: var(--neon-magenta);
+  box-shadow: 0 0 16px var(--neon-magenta);
+  font-size: clamp(0.8rem, 3.5vw, 1.1rem);
+}
+
+/* Minesweeper */
+.mines__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  width: min(100%, 380px);
+}
+
+.mines__mode {
+  min-height: 36px;
+  padding: 0 var(--s-3);
+  font-size: 0.8rem;
+}
+
+.mines {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 2px;
+  width: min(100%, 380px);
+}
+
+.mines__cell {
+  aspect-ratio: 1;
+  padding: 0;
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.mines__cell.is-open {
+  background: var(--bg);
+  cursor: default;
+}
+
+.mines__cell.is-mine {
+  color: var(--bg);
+  background: var(--danger);
+}
+
+.mines__cell[data-n='1'] {
+  color: var(--neon-cyan);
+}
+
+.mines__cell[data-n='2'] {
+  color: var(--neon-green);
+}
+
+.mines__cell[data-n='3'] {
+  color: var(--warn);
+}
+
+.mines__cell[data-n='4'],
+.mines__cell[data-n='5'],
+.mines__cell[data-n='6'] {
+  color: var(--neon-magenta);
+}
+
+/* Kasir Rush */
+.kasir {
+  display: grid;
+  gap: var(--s-4);
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .kasir {
+    grid-template-columns: 1.2fr 1fr;
+  }
+
+  .kasir__log {
+    grid-column: 1 / -1;
+  }
+}
+
+.kasir__items {
+  margin-bottom: var(--s-3);
+  font-size: 0.85rem;
+}
+
+.kasir__items li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: 2px 0;
+  border-bottom: 1px dashed var(--border);
+}
+
+.kasir__total,
+.kasir__paid {
+  margin: 0;
+  text-align: right;
+}
+
+.kasir__timer {
+  height: 4px;
+  margin-top: var(--s-3);
+  overflow: hidden;
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.kasir__timer span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--danger), var(--warn), var(--neon-green));
+  transform-origin: 0 50%;
+}
+
+.kasir__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.kasir__form label {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.kasir__input,
+.typer__input {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--s-2) var(--s-3);
+  font: inherit;
+  font-size: 1.1rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.kasir__input:focus,
+.typer__input:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: var(--glow-accent);
+}
+
+.kasir__keys {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-2);
+}
+
+.kasir__submit {
+  justify-content: center;
+}
+
+.kasir__log {
+  margin: 0;
+  min-height: 1.6em;
+  font-size: 0.85rem;
+}
+
+/* PNL Trader */
+.pnl__head,
+.bughunt__head,
+.roulette__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s-2) var(--s-4);
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+.pnl__actions {
+  display: flex;
+  gap: var(--s-3);
+}
+
+.pnl__buy {
+  color: var(--bg);
+  background: var(--neon-green);
+  border-color: var(--neon-green);
+}
+
+.pnl__sell {
+  color: var(--bg);
+  background: var(--danger);
+  border-color: var(--danger);
+}
+
+.pnl__buy kbd,
+.pnl__sell kbd {
+  color: inherit;
+  background: transparent;
+  border-color: currentColor;
+}
+
+.pnl__cal {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: var(--s-1);
+  width: 100%;
+  font-size: 0.7rem;
+}
+
+.pnl__cal li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--s-1);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.pnl__cal li span {
+  color: var(--muted);
+}
+
+.pnl__cal .is-win {
+  border-color: var(--neon-green);
+  background: color-mix(in srgb, var(--neon-green) 15%, var(--panel));
+}
+
+.pnl__cal .is-loss {
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 15%, var(--panel));
+}
+
+/* Bug Hunt */
+.bughunt {
+  position: relative;
+  width: 100%;
+}
+
+.bughunt__code {
+  margin: 0;
+  padding: var(--s-3) var(--s-4) var(--s-3) var(--s-10);
+  font-size: 0.8rem;
+  list-style: decimal;
+  color: var(--muted);
+}
+
+.bughunt__code code {
+  font: inherit;
+  color: var(--text);
+  white-space: pre;
+}
+
+.bughunt__layer {
+  position: absolute;
+  inset: 36px 0 0 0;
+}
+
+.bughunt__bug {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  padding: 0;
+  font-size: 1.6rem;
+  background: color-mix(in srgb, var(--danger) 18%, transparent);
+  border: 1px solid var(--danger);
+  border-radius: 50%;
+  cursor: crosshair;
+  touch-action: manipulation;
+  animation: bug-pop 0.18s var(--ease);
+}
+
+.bughunt__bug.is-squashed {
+  pointer-events: none;
+  border-color: var(--accent);
+}
+
+@keyframes bug-pop {
+  from {
+    transform: scale(0.3);
+  }
+}
+
+/* Vibe Typer */
+.typer__race {
+  display: grid;
+  gap: var(--s-2);
+  width: 100%;
+  font-size: 0.75rem;
+}
+
+.typer__race > div {
+  display: grid;
+  grid-template-columns: 3ch 1fr;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.typer__bar {
+  height: 8px;
+  overflow: hidden;
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.typer__bar span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+.typer__bar--ai span {
+  background: var(--neon-magenta);
+}
+
+.typer__text {
+  width: 100%;
+  margin: 0;
+  padding: var(--s-4);
+  overflow-x: auto;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--muted);
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.typer__text .is-ok {
+  color: var(--accent);
+}
+
+.typer__text .is-bad {
+  color: var(--bg);
+  background: var(--danger);
+}
+
+.typer__text .is-cur {
+  color: var(--bg);
+  background: var(--text);
+}
+
+.typer__input {
+  font-size: 0.9rem;
+  resize: none;
+}
+
+/* Prompt Roulette */
+.roulette__head + .kasir__timer {
+  width: 100%;
+  margin-top: 0;
+}
+
+.roulette__who {
+  align-self: flex-start;
+  margin: 0;
+  font-size: 0.75rem;
+}
+
+.roulette__code {
+  width: 100%;
+  margin: 0;
+  padding: var(--s-4);
+  overflow-x: auto;
+  font: inherit;
+  font-size: 0.82rem;
+}
+
+.roulette__code code {
+  font: inherit;
+}
+
+.roulette__opts {
+  display: grid;
+  gap: var(--s-2);
+  width: 100%;
+}
+
+.roulette__opt {
+  display: flex;
+  gap: var(--s-2);
+  align-items: flex-start;
+  min-height: 48px;
+  padding: var(--s-3);
+  font: inherit;
+  font-size: 0.85rem;
+  text-align: left;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.roulette__opt:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.roulette__opt.is-right {
+  border-color: var(--neon-green);
+  background: color-mix(in srgb, var(--neon-green) 15%, var(--panel));
+}
+
+.roulette__opt.is-wrong {
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 15%, var(--panel));
+}
+
+.roulette__fb {
+  min-height: 1.6em;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+/* Packet Runner */
+.runner__canvas {
+  cursor: pointer;
+}
+
 /* ============ Konami: mode khusus ============ */
 .konami-flash {
   position: fixed;

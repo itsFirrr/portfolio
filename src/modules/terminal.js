@@ -1,6 +1,9 @@
 // Terminal interaktif di section Contact: perintah, riwayat (↑/↓), autocomplete (Tab).
 import { projects, GITHUB_URL, isTodo } from '../data/projects.js';
 import { THEMES, getTheme, setTheme, cycleTheme } from './theme.js';
+import { GAME_LIST } from '../data/games.js';
+
+const openGame = (id) => import('./arcade/arcade.js').then((m) => m.openArcade(id));
 
 const CONTACT = {
   email: 'ahmdfirdaus241@gmail.com',
@@ -82,6 +85,27 @@ const COMMANDS = {
       return `<span class="text-danger">theme: tema tidak dikenal "${esc(args[0])}".</span> Pilihan: ${THEMES.join(', ')} (sekarang: ${getTheme()})`;
     },
   },
+  games: {
+    desc: 'buka itsfirrr arcade 🎮',
+    run: () => {
+      openGame();
+      return (
+        GAME_LIST.map((g) => `  <span class="text-neon">${g.id.padEnd(9)}</span> ${esc(g.title)} <span class="text-muted">— ${esc(g.desc)}</span>`).join('\n') +
+        '\n\nMain langsung: <span class="text-neon">play &lt;nama&gt;</span>, misal <span class="text-neon">play snake</span>'
+      );
+    },
+  },
+  play: {
+    desc: 'main minigame: play <nama>',
+    run: (args) => {
+      const id = (args[0] || '').toLowerCase();
+      if (!id) return 'Pakai: play &lt;nama&gt;. Ketik <span class="text-neon">games</span> untuk daftar.';
+      const g = GAME_LIST.find((x) => x.id === id);
+      if (!g) return `<span class="text-danger">play: game "${esc(id)}" tidak ada.</span> Ketik <span class="text-neon">games</span>.`;
+      openGame(g.id);
+      return `Loading ${esc(g.title)}… 🎮`;
+    },
+  },
   clear: {
     desc: 'bersihkan layar',
     run: () => null,
@@ -160,7 +184,11 @@ export function initTerminal() {
       if (!value) return;
       e.preventDefault();
       const [first, ...rest] = value.split(/\s+/);
-      if (first === 'theme' && rest.length <= 1) {
+      if (first === 'play' && rest.length <= 1) {
+        const m = GAME_LIST.map((g) => g.id).filter((id) => id.startsWith(rest[0] || ''));
+        if (m.length === 1) input.value = `play ${m[0]}`;
+        else if (m.length) print(m.join('  '), 'text-muted');
+      } else if (first === 'theme' && rest.length <= 1) {
         const m = THEMES.filter((t) => t.startsWith(rest[0] || ''));
         if (m.length === 1) input.value = `theme ${m[0]}`;
         else if (m.length) print(m.join('  '), 'text-muted');

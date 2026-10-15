@@ -1,5 +1,5 @@
 // Easter egg Konami code: ↑ ↑ ↓ ↓ ← → ← → B A
-// Efek: toggle tema magenta, Matrix rain "burst", glitch nama, dan pesan ACCESS GRANTED.
+// Efek: toggle tema magenta, Matrix rain "burst", glitch nama, pesan ACCESS GRANTED, lalu buka arcade minigame.
 import { getTheme, setTheme } from './theme.js';
 import { matrixBurst } from './matrix.js';
 import { glitchName } from './hero.js';
@@ -22,6 +22,8 @@ function trigger() {
     matrixBurst(3500);
     glitchName();
   }
+  // Arcade dimuat lazy, baru diunduh saat easter egg ditemukan
+  import('./arcade/arcade.js').then((m) => m.openArcade());
 }
 
 export function initKonami() {
@@ -30,6 +32,8 @@ export function initKonami() {
   document.addEventListener('keydown', (e) => {
     // Abaikan saat mengetik di terminal agar perintah tidak terganggu
     if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+    // Jangan terpicu saat sedang bermain (panah dipakai game)
+    if (document.body.classList.contains('arcade-open')) return;
     buffer.push(e.key.toLowerCase());
     if (buffer.length > SEQUENCE.length) buffer.shift();
     if (buffer.length === SEQUENCE.length && buffer.every((k, i) => k === SEQUENCE[i])) {
