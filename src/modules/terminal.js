@@ -3,9 +3,9 @@ import { projects, GITHUB_URL, isTodo } from '../data/projects.js';
 import { THEMES, getTheme, setTheme, cycleTheme } from './theme.js';
 
 const CONTACT = {
-  email: 'TODO_EMAIL',
+  email: 'ahmdfirdaus241@gmail.com',
   github: GITHUB_URL,
-  instagram: 'TODO_INSTAGRAM',
+  instagram: 'https://www.instagram.com/firrr.af',
   linkedin: 'TODO_LINKEDIN',
 };
 
