@@ -1,3 +1,320 @@
 <!doctype html>
-<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>itsfirrr</title></head>
-<body><main id="app">itsfirrr</main><script type="module" src="/src/main.js"></script></body></html>
+<html lang="id" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ahmad Firdaus (itsfirrr) — Programmer &amp; Vibe Coder</title>
+    <meta
+      name="description"
+      content="Portfolio Ahmad Firdaus (itsfirrr), programmer dan vibe coder dari D-4 Teknik Komputer dan Jaringan PNUP. IoT, Android, web, dan tools yang berjalan di browser."
+    />
+    <meta name="author" content="Ahmad Firdaus" />
+    <meta name="theme-color" content="#05070a" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="canonical" href="TODO_DOMAIN_URL/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ahmad Firdaus (itsfirrr) — Programmer & Vibe Coder" />
+    <meta property="og:description" content="Terminal, neon, dan proyek nyata: IoT, Android, web, dan tools browser." />
+    <meta property="og:url" content="TODO_DOMAIN_URL/" />
+    <meta property="og:image" content="TODO_DOMAIN_URL/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Tandai bahwa JS aktif sedini mungkin supaya state awal animasi tidak "berkedip" -->
+    <script>
+      document.documentElement.classList.replace('no-js', 'js');
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Lewati ke konten</a>
+
+    <!-- Boot screen: hanya tampil bila JS aktif dan motion diizinkan -->
+    <div id="boot" class="boot" hidden aria-hidden="true">
+      <pre class="boot__log" id="boot-log"></pre>
+      <button type="button" class="boot__skip" id="boot-skip">skip [esc]</button>
+    </div>
+
+    <div class="progress" aria-hidden="true"><span class="progress__bar" id="progress-bar"></span></div>
+    <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+
+    <header class="nav" id="nav">
+      <nav class="nav__inner container" aria-label="Navigasi utama">
+        <a href="#hero" class="nav__brand" aria-label="itsfirrr, kembali ke atas">
+          <span class="text-neon">~/</span>itsfirrr<span class="nav__caret" aria-hidden="true">_</span>
+        </a>
+        <button
+          type="button"
+          class="nav__toggle"
+          id="nav-toggle"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          aria-label="Buka menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__menu" id="nav-menu">
+          <li><a href="#about" data-nav="about">[about]</a></li>
+          <li><a href="#skills" data-nav="skills">[skills]</a></li>
+          <li><a href="#projects" data-nav="projects">[projects]</a></li>
+          <li><a href="#vibe" data-nav="vibe">[vibe]</a></li>
+          <li><a href="#contact" data-nav="contact">[contact]</a></li>
+        </ul>
+        <span class="nav__status" aria-hidden="true"><span class="nav__dot"></span> online</span>
+      </nav>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <!-- HERO -->
+      <section id="hero" class="hero" aria-labelledby="hero-title">
+        <canvas class="hero__matrix" id="matrix" aria-hidden="true"></canvas>
+        <div class="hero__inner container">
+          <div class="window hero__window">
+            <div class="window__bar">
+              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="window__title">itsfirrr@portfolio: ~</span>
+            </div>
+            <div class="window__body">
+              <p class="prompt-line">
+                <span class="prompt">itsfirrr@portfolio:~$</span>
+                <span class="hero__cmd" id="hero-cmd" data-text="whoami">whoami</span><span class="caret" aria-hidden="true"></span>
+              </p>
+              <h1 class="hero__name" id="hero-title" data-scramble="Ahmad Firdaus">Ahmad Firdaus</h1>
+              <p class="hero__role">
+                <span class="text-muted">&gt; role:</span>
+                <span class="hero__role-text" id="hero-role" data-roles="Programmer|Vibe Coder|IoT Tinkerer">Programmer · Vibe Coder · IoT Tinkerer</span><span class="caret caret--cyan" aria-hidden="true"></span>
+              </p>
+              <p class="hero__tagline">
+                Mahasiswa D-4 Teknik Komputer dan Jaringan PNUP. Membangun IoT, aplikasi Android, web, dan tools browser.
+                <span class="text-muted">// TODO_TAGLINE</span>
+              </p>
+              <div class="hero__cta">
+                <a href="#projects" class="btn btn--primary">./projects</a>
+                <a href="#contact" class="btn btn--ghost">./contact</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="#about" class="hero__scroll" aria-label="Gulir ke About">
+          <span>scroll</span>
+          <span class="hero__scroll-line" aria-hidden="true"></span>
+        </a>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="section" aria-labelledby="about-title">
+        <div class="container">
+          <h2 class="section__title" id="about-title" data-reveal><span class="text-neon">01.</span> cat about.md</h2>
+          <div class="about__grid">
+            <div class="window" data-reveal>
+              <div class="window__bar">
+                <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="window__title">about.md</span>
+              </div>
+              <div class="window__body about__text">
+                <p><span class="prompt">$</span> cat about.md</p>
+                <p>Halo, saya <strong class="text-neon">Ahmad Firdaus</strong>, biasa dipanggil <strong>itsfirrr</strong>.</p>
+                <p>
+                  Mahasiswa D-4 Teknik Komputer dan Jaringan di Politeknik Negeri Ujung Pandang (PNUP). Saya senang
+                  menyambungkan hardware dan software: dari ESP32 dan Firebase, aplikasi Android dengan Kotlin/Compose,
+                  sampai web dengan Laravel.
+                </p>
+                <p>
+                  Sebagai <span class="text-cyan">vibe coder</span>, saya memakai AI sebagai rekan pair-programming
+                  untuk bergerak cepat, lalu memastikan hasilnya tetap rapi, teruji, dan bisa dipakai orang sungguhan.
+                </p>
+                <p class="text-muted">// status: terbuka untuk magang, kolaborasi, dan proyek freelance.</p>
+              </div>
+            </div>
+            <ul class="stats" aria-label="Statistik">
+              <li class="stat" data-reveal>
+                <span class="stat__num" data-count="4">4</span><span class="stat__suffix">+</span>
+                <span class="stat__label">proyek utama</span>
+              </li>
+              <li class="stat" data-reveal>
+                <span class="stat__num" data-count="8">8</span><span class="stat__suffix">+</span>
+                <span class="stat__label">teknologi inti</span>
+              </li>
+              <li class="stat" data-reveal>
+                <span class="stat__num" data-count="0" data-todo="TODO_STAT_YEARS">0</span><span class="stat__suffix">+</span>
+                <span class="stat__label">tahun ngoding <span class="text-muted">(TODO_STAT_YEARS)</span></span>
+              </li>
+              <li class="stat" data-reveal>
+                <span class="stat__num" data-count="0" data-todo="TODO_STAT_COMMITS">0</span><span class="stat__suffix">+</span>
+                <span class="stat__label">commit di GitHub <span class="text-muted">(TODO_STAT_COMMITS)</span></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="section" aria-labelledby="skills-title">
+        <div class="container">
+          <h2 class="section__title" id="skills-title" data-reveal><span class="text-neon">02.</span> ls ./skills</h2>
+        </div>
+        <div class="marquee" data-reveal>
+          <ul class="marquee__track" aria-label="Tech stack">
+            <li>Laravel</li><li>Kotlin</li><li>Flutter</li><li>ESP32</li><li>Firebase</li><li>MySQL</li><li>Tailwind</li><li>Python</li>
+          </ul>
+          <ul class="marquee__track marquee__track--reverse" aria-hidden="true">
+            <li>Jetpack Compose</li><li>Livewire</li><li>Riverpod</li><li>JavaScript</li><li>Arduino</li><li>Git</li><li>Linux</li><li>Vite</li>
+          </ul>
+        </div>
+        <div class="container">
+          <ul class="skill-grid">
+            <li class="card skill-card" data-tilt data-reveal>
+              <span class="skill-card__icon" aria-hidden="true">[m]</span>
+              <h3>Mobile</h3>
+              <p>Aplikasi Android native dengan Kotlin dan Jetpack Compose, serta Flutter dengan Riverpod dan Drift.</p>
+              <p class="tags"><span>Kotlin</span><span>Compose</span><span>Flutter</span></p>
+            </li>
+            <li class="card skill-card" data-tilt data-reveal>
+              <span class="skill-card__icon" aria-hidden="true">[w]</span>
+              <h3>Web</h3>
+              <p>Backend dan dashboard dengan Laravel dan Livewire, front-end ringan dengan JavaScript dan Tailwind.</p>
+              <p class="tags"><span>Laravel</span><span>MySQL</span><span>Tailwind</span></p>
+            </li>
+            <li class="card skill-card" data-tilt data-reveal>
+              <span class="skill-card__icon" aria-hidden="true">[i]</span>
+              <h3>IoT</h3>
+              <p>Perangkat berbasis ESP32 yang terhubung ke Firebase untuk monitoring dan kontrol jarak jauh.</p>
+              <p class="tags"><span>ESP32</span><span>Firebase</span><span>Sensor</span></p>
+            </li>
+            <li class="card skill-card" data-tilt data-reveal>
+              <span class="skill-card__icon" aria-hidden="true">[t]</span>
+              <h3>Tools</h3>
+              <p>Git, Linux, Python untuk skrip otomasi, dan alur kerja AI-assisted untuk iterasi cepat.</p>
+              <p class="tags"><span>Git</span><span>Python</span><span>AI</span></p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="section" aria-labelledby="projects-title">
+        <div class="container">
+          <h2 class="section__title" id="projects-title" data-reveal><span class="text-neon">03.</span> ls ./projects</h2>
+          <ul class="project-grid" id="project-grid">
+            <!-- Diisi dari src/data/projects.js -->
+          </ul>
+          <noscript>
+            <p class="noscript">Daftar proyek butuh JavaScript. Lihat semua proyek di <a href="https://github.com/itsFirrr">github.com/itsFirrr</a>, <a href="https://kanrungtech.com">Kanrung Tech</a>, dan <a href="https://aio-tool.netlify.app/">AIO Tool</a>.</p>
+          </noscript>
+        </div>
+      </section>
+
+      <!-- VIBE CODING -->
+      <section id="vibe" class="section" aria-labelledby="vibe-title">
+        <div class="container">
+          <h2 class="section__title" id="vibe-title" data-reveal><span class="text-neon">04.</span> vibe --code</h2>
+          <p class="section__lead" data-reveal>Cara saya bekerja: jelaskan niat ke AI, review hasilnya, lalu rapikan sampai siap dipakai.</p>
+          <div class="vibe__grid" id="vibe-grid">
+            <aside class="window vibe__chat" data-reveal aria-label="Panel prompt AI">
+              <div class="window__bar">
+                <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="window__title">ai://prompt</span>
+              </div>
+              <div class="window__body">
+                <p class="vibe__who text-muted">you &gt;</p>
+                <p class="vibe__prompt" id="vibe-prompt">Buat fungsi untuk membaca suhu dari sensor dan kirim ke Firebase tiap 5 detik.</p>
+                <p class="vibe__who text-muted">ai &gt;</p>
+                <p class="vibe__status" id="vibe-status">Siap. Menulis <span class="text-cyan">dryer.ino</span>…</p>
+              </div>
+            </aside>
+            <div class="window vibe__editor" data-reveal>
+              <div class="window__bar editor__tabs">
+                <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="editor__tab is-active" id="editor-tab">dryer.ino</span>
+              </div>
+              <div class="editor__body">
+                <ol class="editor__lines" id="editor-lines" aria-hidden="true"></ol>
+                <pre class="editor__code" id="editor-code" aria-label="Contoh kode yang ditulis bersama AI"><code>void loop() {
+  float temp = readTemp();
+  Firebase.setFloat(db, "/dryer/temp", temp);
+  delay(5000);
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section" aria-labelledby="contact-title">
+        <div class="container">
+          <h2 class="section__title" id="contact-title" data-reveal><span class="text-neon">05.</span> ./contact --interactive</h2>
+          <p class="section__lead" data-reveal>Ketik <kbd>help</kbd> untuk melihat perintah. Atau pakai tombol di bawah.</p>
+          <div class="window term" data-reveal>
+            <div class="window__bar">
+              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="window__title">itsfirrr@portfolio: ~/contact</span>
+            </div>
+            <div class="window__body term__body" id="term-body">
+              <div class="term__output" id="term-output" role="log" aria-live="polite" aria-label="Output terminal">
+                <p>Selamat datang di terminal itsfirrr. Ketik <span class="text-neon">help</span> untuk mulai.</p>
+              </div>
+              <form class="term__form" id="term-form" autocomplete="off">
+                <label for="term-input" class="prompt">guest@itsfirrr:~$</label>
+                <input
+                  id="term-input"
+                  class="term__input"
+                  type="text"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  enterkeyhint="send"
+                  aria-label="Perintah terminal. Ketik help lalu Enter."
+                  aria-describedby="term-hint"
+                />
+              </form>
+              <p class="sr-only" id="term-hint">Gunakan panah atas dan bawah untuk riwayat, Tab untuk melengkapi perintah.</p>
+            </div>
+          </div>
+
+          <ul class="contact-grid" aria-label="Kontak">
+            <li data-reveal><a class="contact-btn" href="mailto:TODO_EMAIL"><span aria-hidden="true">@</span> Email</a></li>
+            <li data-reveal><a class="contact-btn" href="https://github.com/itsFirrr" target="_blank" rel="noopener"><span aria-hidden="true">&lt;/&gt;</span> GitHub</a></li>
+            <li data-reveal><a class="contact-btn" href="TODO_INSTAGRAM" target="_blank" rel="noopener"><span aria-hidden="true">◎</span> Instagram</a></li>
+            <li data-reveal><a class="contact-btn" href="TODO_LINKEDIN" target="_blank" rel="noopener"><span aria-hidden="true">in</span> LinkedIn</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>© <span id="year">2026</span> Ahmad Firdaus · itsfirrr. Built with Vite + caffeine.</p>
+        <ul class="footer__links" aria-label="Sosial">
+          <li><a href="https://github.com/itsFirrr" target="_blank" rel="noopener">github</a></li>
+          <li><a href="TODO_INSTAGRAM" target="_blank" rel="noopener">instagram</a></li>
+          <li><a href="TODO_LINKEDIN" target="_blank" rel="noopener">linkedin</a></li>
+        </ul>
+        <p class="footer__hint text-muted" aria-hidden="true">psst… ↑ ↑ ↓ ↓ ← → ← → b a</p>
+      </div>
+    </footer>
+
+    <!-- Modal detail proyek -->
+    <div class="modal" id="project-modal" hidden>
+      <div class="modal__backdrop" data-close></div>
+      <div class="modal__dialog window" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+        <div class="window__bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="window__title" id="modal-file">project.md</span>
+          <button type="button" class="modal__close" data-close aria-label="Tutup detail proyek">✕</button>
+        </div>
+        <div class="window__body modal__body">
+          <h3 id="modal-title"></h3>
+          <p id="modal-desc"></p>
+          <p class="tags" id="modal-tags"></p>
+          <div class="modal__actions" id="modal-actions"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

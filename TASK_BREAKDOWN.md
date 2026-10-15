@@ -11,18 +11,18 @@ Kerjakan berurutan. Centang `[x]` setelah selesai dan verifikasi dengan `npm run
 - [x] Verifikasi: dev server jalan, build sukses
 
 ## Fase 1 — Fondasi
-- [ ] `index.html` semantik + meta SEO + Open Graph + favicon
-- [ ] `src/styles/main.css` (token, reset, utilitas, focus style)
-- [ ] `src/main.js` sebagai entry yang menginisialisasi modul
-- [ ] Util: `reducedMotion.js` (deteksi dan helper), `isMobile.js`
-- [ ] Inisialisasi Lenis + sinkron dengan ScrollTrigger
-- [ ] Verifikasi: halaman kosong dengan font dan warna benar
+- [x] `index.html` semantik + meta SEO + Open Graph + favicon
+- [x] `src/styles/main.css` (token, reset, utilitas, focus style)
+- [x] `src/main.js` sebagai entry yang menginisialisasi modul
+- [x] Util: `reducedMotion.js` (deteksi dan helper), `isMobile.js`
+- [x] Inisialisasi Lenis + sinkron dengan ScrollTrigger
+- [x] Verifikasi: halaman kosong dengan font dan warna benar
 
 ## Fase 2 — Layout dan Navbar
-- [ ] Navbar status-bar + menu hamburger mobile
-- [ ] Highlight section aktif saat scroll
-- [ ] Progress bar scroll
-- [ ] Kerangka 6 section (id: hero, about, skills, projects, vibe, contact) + footer
+- [x] Navbar status-bar + menu hamburger mobile
+- [x] Highlight section aktif saat scroll
+- [x] Progress bar scroll
+- [x] Kerangka 6 section (id: hero, about, skills, projects, vibe, contact) + footer
 
 ## Fase 3 — Hero
 - [ ] Jendela terminal dengan typewriter `whoami`
