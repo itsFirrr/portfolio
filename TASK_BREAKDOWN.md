@@ -33,9 +33,9 @@ Kerjakan berurutan. Centang `[x]` setelah selesai dan verifikasi dengan `npm run
 - [x] Boot screen opsional + tombol skip
 
 ## Fase 4 — About dan Skills
-- [ ] About: teks gaya terminal + kartu stats (counter) dengan nilai placeholder `TODO_`
-- [ ] Skills: marquee dua baris + kartu kategori tilt
-- [ ] Scroll reveal dengan stagger
+- [x] About: teks gaya terminal + kartu stats (counter) dengan nilai placeholder `TODO_`
+- [x] Skills: marquee dua baris + kartu kategori tilt
+- [x] Scroll reveal dengan stagger
 
 ## Fase 5 — Projects
 - [ ] `src/data/projects.js` berisi 4 proyek (lihat PRD bagian 5b) + kartu "More on GitHub"
