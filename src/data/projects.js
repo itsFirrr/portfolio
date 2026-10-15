@@ -3,6 +3,9 @@
 
 export const GITHUB_URL = 'https://github.com/itsFirrr';
 
+// Taruh file CV di public/cv.pdf lalu ganti nilai ini menjadi '/cv.pdf'
+export const CV_URL = 'TODO_CV';
+
 export const projects = [
   {
     id: 'kanrung-tech',
@@ -14,6 +17,11 @@ export const projects = [
     tech: ['ESP32', 'Firebase', 'Kotlin/Compose', 'Laravel'],
     live: 'https://kanrungtech.com',
     repo: null,
+    en: {
+      short: 'IoT-based rotary clove dryer with an Android app and a showcase website.',
+      description:
+        'IoT-based rotary clove dryer with an Android app and a showcase website, part of the PPK Ormawa program. An ESP32 reads sensors and pushes data to Firebase, the Android app (Kotlin/Compose) handles monitoring and control, and a Laravel website showcases the project.',
+    },
     thumb: 'green',
     glyph: '[iot]',
   },
@@ -27,6 +35,11 @@ export const projects = [
     tech: ['Web', 'JavaScript'],
     live: 'https://aio-tool.netlify.app/',
     repo: null,
+    en: {
+      short: 'A collection of web tools that run right in the browser.',
+      description:
+        'A collection of web tools that run right in the browser, with no install and no uploading data to a server. Built to speed up small everyday tasks.',
+    },
     thumb: 'cyan',
     glyph: '{ aio }',
   },
@@ -40,6 +53,12 @@ export const projects = [
     tech: ['Laravel', 'Livewire', 'MySQL'],
     live: null,
     repo: 'https://github.com/itsFirrr/warpro',
+    en: {
+      title: 'WarPro (POS App)',
+      short: 'Offline POS and stock management for small shops: barcode scanning, debt notes, profit/loss dashboard.',
+      description:
+        'An offline point-of-sale (POS) and stock management app for small neighborhood shops. Features: barcode scanning, customer debt notes, and a profit/loss dashboard.',
+    },
     thumb: 'mix',
     glyph: '$ pos',
   },
@@ -53,6 +72,11 @@ export const projects = [
     tech: ['Flutter', 'Riverpod', 'Drift'],
     live: null,
     repo: 'https://github.com/itsFirrr/pnl-calendar',
+    en: {
+      short: 'Calendar-style trading journal with P/L statistics.',
+      description:
+        'A calendar-style trading journal: log daily results and see profit/loss (P/L) statistics visually. Data is stored locally with Drift, state is managed with Riverpod.',
+    },
     thumb: 'magenta',
     glyph: '+P/L',
   },

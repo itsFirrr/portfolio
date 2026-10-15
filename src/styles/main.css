@@ -1407,6 +1407,296 @@ kbd {
   font-size: 0.75rem;
 }
 
+/* ============ Navbar tools: bahasa & suara ============ */
+.nav__tools {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.nav__lang {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.nav__lang button,
+.nav__sound {
+  min-width: 36px;
+  min-height: 32px;
+  padding: 0 var(--s-2);
+  font: inherit;
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.nav__lang button[aria-pressed='true'] {
+  color: var(--bg);
+  background: var(--accent);
+  font-weight: 700;
+}
+
+.nav__sound {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.nav__sound[aria-pressed='true'] {
+  border-color: var(--accent);
+  box-shadow: var(--glow-accent);
+}
+
+@media (max-width: 767px) {
+  .nav__tools {
+    margin-left: auto;
+    gap: var(--s-2);
+  }
+
+  /* Urutan mobile: brand … [ID|EN] [🔇] [☰] */
+  .nav__toggle {
+    order: 3;
+    margin-left: 0;
+  }
+}
+
+/* ============ GitHub live stats ============ */
+.gh {
+  margin-top: var(--s-6);
+}
+
+.gh__live {
+  color: var(--accent);
+  font-size: 0.7rem;
+}
+
+.gh .window__body {
+  display: grid;
+  gap: var(--s-3);
+}
+
+@media (min-width: 768px) {
+  .gh .window__body {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--s-8);
+  }
+
+  .gh__nums {
+    grid-column: 1 / -1;
+  }
+}
+
+.gh__nums {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-6);
+}
+
+.gh__nums li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-2);
+}
+
+.gh__nums b {
+  font-size: 1.75rem;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.gh__nums span,
+.gh__label {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.gh__label {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .gh__label {
+    display: none;
+  }
+}
+
+.gh__langs,
+.gh__recent {
+  display: grid;
+  gap: var(--s-2);
+  font-size: 0.85rem;
+}
+
+@media (min-width: 768px) {
+  .gh__langs {
+    grid-column: span 2;
+  }
+}
+
+.gh__langs li {
+  display: grid;
+  grid-template-columns: 11ch 1fr 4ch;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.gh__bar {
+  height: 6px;
+  overflow: hidden;
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.gh__bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--neon-green), var(--neon-cyan));
+  transform-origin: 0 50%;
+}
+
+.gh__pct {
+  text-align: right;
+  color: var(--muted);
+}
+
+.gh__recent li {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ============ Timeline (git log) ============ */
+.log {
+  position: relative;
+  display: grid;
+  gap: var(--s-6);
+  padding-left: var(--s-8);
+}
+
+.log::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 9px;
+  width: 2px;
+  background: linear-gradient(var(--accent), var(--neon-cyan), var(--border));
+}
+
+.log__item {
+  position: relative;
+  max-width: 70ch;
+}
+
+.log__dot {
+  position: absolute;
+  top: 6px;
+  left: calc(var(--s-8) * -1 + 3px);
+  width: 14px;
+  height: 14px;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  box-shadow: var(--glow-accent);
+}
+
+.log__item--edu .log__dot {
+  border-color: var(--neon-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+.log__item--org .log__dot {
+  border-color: var(--warn);
+  box-shadow: none;
+}
+
+.log__meta {
+  margin: 0 0 var(--s-1);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.log__hash {
+  color: var(--warn);
+}
+
+.log__ref {
+  color: var(--neon-cyan);
+  font-weight: 700;
+}
+
+.log__type {
+  color: var(--accent);
+}
+
+.log__title {
+  margin-bottom: var(--s-1);
+  font-size: 1.05rem;
+}
+
+.log__title a {
+  color: var(--text);
+}
+
+.log__desc {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* ============ Mode CRT ============ */
+html.crt body::before,
+html.crt body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  pointer-events: none;
+}
+
+/* Scanline */
+html.crt body::before {
+  background: repeating-linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--bg) 0%, transparent) 0,
+    color-mix(in srgb, var(--bg) 0%, transparent) 2px,
+    color-mix(in srgb, var(--bg) 55%, transparent) 3px,
+    color-mix(in srgb, var(--bg) 0%, transparent) 4px
+  );
+  animation: crt-flicker 6s steps(60) infinite;
+}
+
+/* Vignette + kelengkungan layar */
+html.crt body::after {
+  background: radial-gradient(ellipse at center, transparent 60%, color-mix(in srgb, var(--bg) 85%, transparent) 100%);
+  box-shadow: inset 0 0 120px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+html.crt body {
+  text-shadow:
+    0.6px 0 color-mix(in srgb, var(--neon-magenta) 45%, transparent),
+    -0.6px 0 color-mix(in srgb, var(--neon-cyan) 45%, transparent);
+}
+
+@keyframes crt-flicker {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.crt body::before {
+    animation: none;
+  }
+}
+
 /* ============ Arcade (minigame easter egg) ============ */
 .arcade {
   position: fixed;

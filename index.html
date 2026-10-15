@@ -31,7 +31,7 @@
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Lewati ke konten</a>
+    <a class="skip-link" href="#main" data-i18n="skip">Lewati ke konten</a>
 
     <!-- Boot screen: hanya tampil bila JS aktif dan motion diizinkan -->
     <div id="boot" class="boot" hidden aria-hidden="true">
@@ -43,8 +43,8 @@
     <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
 
     <header class="nav" id="nav">
-      <nav class="nav__inner container" aria-label="Navigasi utama">
-        <a href="#hero" class="nav__brand" title="Kembali ke atas">
+      <nav class="nav__inner container" aria-label="Navigasi utama" data-i18n-attr="aria-label:a11y.nav">
+        <a href="#hero" class="nav__brand" title="Kembali ke atas" data-i18n-attr="title:a11y.top">
           <span class="text-neon">~/</span>itsfirrr<span class="nav__caret" aria-hidden="true">_</span>
         </a>
         <button
@@ -61,10 +61,18 @@
           <li><a href="#about" data-nav="about">[about]</a></li>
           <li><a href="#skills" data-nav="skills">[skills]</a></li>
           <li><a href="#projects" data-nav="projects">[projects]</a></li>
+          <li><a href="#log" data-nav="log">[log]</a></li>
           <li><a href="#vibe" data-nav="vibe">[vibe]</a></li>
           <li><a href="#contact" data-nav="contact">[contact]</a></li>
         </ul>
-        <span class="nav__status" aria-hidden="true"><span class="nav__dot"></span> online</span>
+        <div class="nav__tools">
+          <div class="nav__lang" role="group" aria-label="Bahasa / Language">
+            <button type="button" data-lang-btn="id" aria-pressed="true">ID</button>
+            <button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
+          </div>
+          <button type="button" class="nav__sound" data-sound-btn aria-pressed="false" aria-label="Efek suara" data-i18n-attr="aria-label:a11y.sound"><span aria-hidden="true">🔇</span></button>
+          <span class="nav__status" aria-hidden="true"><span class="nav__dot"></span> online</span>
+        </div>
       </nav>
     </header>
 
@@ -89,7 +97,7 @@
                 <span class="hero__role-text" id="hero-role" data-roles="Programmer|Vibe Coder|IoT Tinkerer">Programmer · Vibe Coder · IoT Tinkerer</span><span class="caret caret--cyan" aria-hidden="true"></span>
               </p>
               <p class="hero__tagline">
-                Mahasiswa D-4 Teknik Komputer dan Jaringan PNUP. Membangun IoT, aplikasi Android, web, dan tools browser.
+                <span data-i18n="hero.tagline">Mahasiswa D-4 Teknik Komputer dan Jaringan PNUP. Membangun IoT, aplikasi Android, web, dan tools browser.</span>
                 <span class="text-muted">From Prompt To World</span>
               </p>
               <div class="hero__cta">
@@ -99,7 +107,7 @@
             </div>
           </div>
         </div>
-        <a href="#about" class="hero__scroll" aria-label="Gulir ke About">
+        <a href="#about" class="hero__scroll" aria-label="scroll ke About" data-i18n-attr="aria-label:a11y.scroll">
           <span>scroll</span>
           <span class="hero__scroll-line" aria-hidden="true"></span>
         </a>
@@ -117,37 +125,45 @@
               </div>
               <div class="window__body about__text">
                 <p><span class="prompt">$</span> cat about.md</p>
-                <p>Halo, saya <strong class="text-neon">Ahmad Firdaus</strong>, biasa dipanggil <strong>itsfirrr</strong>.</p>
-                <p>
+                <p data-i18n="about.p1">Halo, saya <strong class="text-neon">Ahmad Firdaus</strong>, biasa dipanggil <strong>itsfirrr</strong>.</p>
+                <p data-i18n="about.p2">
                   Mahasiswa D-4 Teknik Komputer dan Jaringan di Politeknik Negeri Ujung Pandang (PNUP). Saya senang
                   menyambungkan hardware dan software: dari ESP32 dan Firebase, aplikasi Android dengan Kotlin/Compose,
                   sampai web dengan Laravel.
                 </p>
-                <p>
+                <p data-i18n="about.p3">
                   Sebagai <span class="text-cyan">vibe coder</span>, saya memakai AI sebagai rekan pair-programming
                   untuk bergerak cepat, lalu memastikan hasilnya tetap rapi, teruji, dan bisa dipakai orang sungguhan.
                 </p>
-                <p class="text-muted">// status: terbuka untuk magang, kolaborasi, dan proyek freelance.</p>
+                <p class="text-muted" data-i18n="about.status">// status: terbuka untuk magang, kolaborasi, dan proyek freelance.</p>
               </div>
             </div>
-            <ul class="stats" aria-label="Statistik">
+            <ul class="stats" aria-label="Statistik" data-i18n-attr="aria-label:a11y.stats">
               <li class="stat" data-reveal>
                 <span class="stat__num" data-count="4">4</span><span class="stat__suffix">+</span>
-                <span class="stat__label">proyek utama</span>
+                <span class="stat__label" data-i18n="stat.projects">proyek utama</span>
               </li>
               <li class="stat" data-reveal>
                 <span class="stat__num" data-count="8">8</span><span class="stat__suffix">+</span>
-                <span class="stat__label">teknologi inti</span>
+                <span class="stat__label" data-i18n="stat.tech">teknologi inti</span>
               </li>
               <li class="stat" data-reveal>
-                <span class="stat__num" data-count="5">0</span><span class="stat__suffix">+</span>
-                <span class="stat__label">tahun ngoding</span>
+                <span class="stat__num" data-count="5">5</span><span class="stat__suffix">+</span>
+                <span class="stat__label" data-i18n="stat.years">tahun ngoding</span>
               </li>
               <li class="stat" data-reveal>
-                <span class="stat__num" data-count="10">0</span><span class="stat__suffix">+</span>
-                <span class="stat__label">commit di GitHub</span>
+                <span class="stat__num" data-count="10">10</span><span class="stat__suffix">+</span>
+                <span class="stat__label" data-i18n="stat.commits">commit di GitHub</span>
               </li>
             </ul>
+          </div>
+          <!-- Diisi src/modules/github.js dari API publik GitHub; tetap tersembunyi bila gagal -->
+          <div class="window gh" id="gh-card" hidden>
+            <div class="window__bar">
+              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="window__title">gh api users/itsFirrr <span class="gh__live">● live</span></span>
+            </div>
+            <div class="window__body" data-gh-body></div>
           </div>
         </div>
       </section>
@@ -170,25 +186,25 @@
             <li class="card skill-card" data-tilt data-reveal>
               <span class="skill-card__icon" aria-hidden="true">[m]</span>
               <h3>Mobile</h3>
-              <p>Aplikasi Android native dengan Kotlin dan Jetpack Compose, serta Flutter dengan Riverpod dan Drift.</p>
+              <p data-i18n="skill.mobile">Aplikasi Android native dengan Kotlin dan Jetpack Compose, serta Flutter dengan Riverpod dan Drift.</p>
               <p class="tags"><span>Kotlin</span><span>Compose</span><span>Flutter</span></p>
             </li>
             <li class="card skill-card" data-tilt data-reveal>
               <span class="skill-card__icon" aria-hidden="true">[w]</span>
               <h3>Web</h3>
-              <p>Backend dan dashboard dengan Laravel dan Livewire, front-end ringan dengan JavaScript dan Tailwind.</p>
+              <p data-i18n="skill.web">Backend dan dashboard dengan Laravel dan Livewire, front-end ringan dengan JavaScript dan Tailwind.</p>
               <p class="tags"><span>Laravel</span><span>MySQL</span><span>Tailwind</span></p>
             </li>
             <li class="card skill-card" data-tilt data-reveal>
               <span class="skill-card__icon" aria-hidden="true">[i]</span>
               <h3>IoT</h3>
-              <p>Perangkat berbasis ESP32 yang terhubung ke Firebase untuk monitoring dan kontrol jarak jauh.</p>
+              <p data-i18n="skill.iot">Perangkat berbasis ESP32 yang terhubung ke Firebase untuk monitoring dan kontrol jarak jauh.</p>
               <p class="tags"><span>ESP32</span><span>Firebase</span><span>Sensor</span></p>
             </li>
             <li class="card skill-card" data-tilt data-reveal>
               <span class="skill-card__icon" aria-hidden="true">[t]</span>
               <h3>Tools</h3>
-              <p>Git, Linux, Python untuk skrip otomasi, dan alur kerja AI-assisted untuk iterasi cepat.</p>
+              <p data-i18n="skill.tools">Git, Linux, Python untuk skrip otomasi, dan alur kerja AI-assisted untuk iterasi cepat.</p>
               <p class="tags"><span>Git</span><span>Python</span><span>AI</span></p>
             </li>
           </ul>
@@ -203,18 +219,29 @@
             <!-- Diisi dari src/data/projects.js -->
           </ul>
           <noscript>
-            <p class="noscript">Daftar proyek butuh JavaScript. Lihat semua proyek di <a href="https://github.com/itsFirrr">github.com/itsFirrr</a>, <a href="https://kanrungtech.com">Kanrung Tech</a>, dan <a href="https://aio-tool.netlify.app/">AIO Tool</a>.</p>
+            <p class="noscript" data-i18n="proj.noscript">Daftar proyek butuh JavaScript. Lihat semua proyek di <a href="https://github.com/itsFirrr">github.com/itsFirrr</a>, <a href="https://kanrungtech.com">Kanrung Tech</a>, dan <a href="https://aio-tool.netlify.app/">AIO Tool</a>.</p>
           </noscript>
+        </div>
+      </section>
+
+      <!-- TIMELINE -->
+      <section id="log" class="section" aria-labelledby="log-title">
+        <div class="container">
+          <h2 class="section__title" id="log-title" data-reveal><span class="text-neon">04.</span> git log --graph</h2>
+          <p class="section__lead" data-reveal data-i18n="log.lead">Perjalanan singkat: pendidikan, program, dan proyek. Commit terbaru di atas.</p>
+          <ol class="log" id="log-list">
+            <!-- Diisi dari src/data/timeline.js -->
+          </ol>
         </div>
       </section>
 
       <!-- VIBE CODING -->
       <section id="vibe" class="section" aria-labelledby="vibe-title">
         <div class="container">
-          <h2 class="section__title" id="vibe-title" data-reveal><span class="text-neon">04.</span> vibe --code</h2>
-          <p class="section__lead" data-reveal>Cara saya bekerja: jelaskan niat ke AI, review hasilnya, lalu rapikan sampai siap dipakai.</p>
+          <h2 class="section__title" id="vibe-title" data-reveal><span class="text-neon">05.</span> vibe --code</h2>
+          <p class="section__lead" data-reveal data-i18n="vibe.lead">Cara saya bekerja: jelaskan niat ke AI, review hasilnya, lalu rapikan sampai siap dipakai.</p>
           <div class="vibe__grid" id="vibe-grid">
-            <aside class="window vibe__chat" data-reveal aria-label="Panel prompt AI">
+            <aside class="window vibe__chat" data-reveal aria-label="Panel prompt AI" data-i18n-attr="aria-label:a11y.aiPanel">
               <div class="window__bar">
                 <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
                 <span class="window__title">ai://prompt</span>
@@ -233,7 +260,7 @@
               </div>
               <div class="editor__body">
                 <ol class="editor__lines" id="editor-lines" aria-hidden="true"></ol>
-                <pre class="editor__code" id="editor-code" aria-label="Contoh kode yang ditulis bersama AI"><code>void loop() {
+                <pre class="editor__code" id="editor-code" aria-label="Contoh kode yang ditulis bersama AI" data-i18n-attr="aria-label:a11y.code"><code>void loop() {
   float temp = readTemp();
   Firebase.setFloat(db, "/dryer/temp", temp);
   delay(5000);
@@ -247,8 +274,8 @@
       <!-- CONTACT -->
       <section id="contact" class="section" aria-labelledby="contact-title">
         <div class="container">
-          <h2 class="section__title" id="contact-title" data-reveal><span class="text-neon">05.</span> ./contact --interactive</h2>
-          <p class="section__lead" data-reveal>Ketik <kbd>help</kbd> untuk melihat perintah. Atau pakai tombol di bawah.</p>
+          <h2 class="section__title" id="contact-title" data-reveal><span class="text-neon">06.</span> ./contact --interactive</h2>
+          <p class="section__lead" data-reveal data-i18n="contact.lead">Ketik <kbd>help</kbd> untuk melihat perintah. Atau pakai tombol di bawah.</p>
           <div class="window term" data-reveal>
             <div class="window__bar">
               <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -268,14 +295,15 @@
                   autocapitalize="off"
                   enterkeyhint="send"
                   aria-label="Perintah terminal. Ketik help lalu Enter."
+                  data-i18n-attr="aria-label:a11y.term"
                   aria-describedby="term-hint"
                 />
               </form>
-              <p class="sr-only" id="term-hint">Gunakan panah atas dan bawah untuk riwayat, Tab untuk melengkapi perintah.</p>
+              <p class="sr-only" id="term-hint" data-i18n="term.hint">Gunakan panah atas dan bawah untuk riwayat, Tab untuk melengkapi perintah.</p>
             </div>
           </div>
 
-          <ul class="contact-grid" aria-label="Kontak">
+          <ul class="contact-grid" aria-label="Kontak" data-i18n-attr="aria-label:a11y.contact">
             <li data-reveal><a class="contact-btn" href="mailto:ahmdfirdaus241@gmail.com"><span aria-hidden="true">@</span> Email</a></li>
             <li data-reveal><a class="contact-btn" href="https://github.com/itsFirrr" target="_blank" rel="noopener"><span aria-hidden="true">&lt;/&gt;</span> GitHub</a></li>
             <li data-reveal><a class="contact-btn" href="https://www.instagram.com/firrr.af" target="_blank" rel="noopener"><span aria-hidden="true">◎</span> Instagram</a></li>
@@ -287,13 +315,13 @@
 
     <footer class="footer">
       <div class="container footer__inner">
-        <p>© <span id="year">2026</span> Ahmad Firdaus · itsfirrr. Built with Vite + caffeine.</p>
+        <p>© <span id="year">2026</span> Ahmad Firdaus · itsfirrr. <span data-i18n="footer.built">Dibuat dengan Vite + kopi.</span></p>
         <ul class="footer__links" aria-label="Sosial">
           <li><a href="https://github.com/itsFirrr" target="_blank" rel="noopener">github</a></li>
           <li><a href="https://www.instagram.com/firrr.af" target="_blank" rel="noopener">instagram</a></li>
           <li><a href="TODO_LINKEDIN" target="_blank" rel="noopener">linkedin</a></li>
         </ul>
-        <p class="footer__hint text-muted" aria-hidden="true">psst… ↑ ↑ ↓ ↓ ← → ← → b a · atau ketik <code>games</code> di terminal</p>
+        <p class="footer__hint text-muted" aria-hidden="true" data-i18n="footer.hint">psst… ↑ ↑ ↓ ↓ ← → ← → b a · atau ketik <code>games</code> di terminal</p>
       </div>
     </footer>
 
@@ -304,7 +332,7 @@
         <div class="window__bar">
           <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
           <span class="window__title" id="modal-file">project.md</span>
-          <button type="button" class="modal__close" data-close aria-label="Tutup detail proyek">✕</button>
+          <button type="button" class="modal__close" data-close aria-label="Tutup detail proyek" data-i18n-attr="aria-label:a11y.closeModal">✕</button>
         </div>
         <div class="window__body modal__body">
           <h3 id="modal-title"></h3>

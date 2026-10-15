@@ -72,3 +72,13 @@ Kerjakan berurutan. Centang `[x]` setelah selesai dan verifikasi dengan `npm run
 - [ ] Hubungkan ke Netlify, pastikan auto deploy
 - [x] Cek OG image dan favicon (lokal); cek situs live setelah deploy oleh pemilik
 - [ ] Update `README.md` dengan URL live
+
+## Fase 11 — Fitur Tambahan
+- [x] Arcade minigame (Konami / `games` / `play <nama>`) dengan 9 game
+- [x] GitHub live stats (API publik, lazy, cache sesi, fallback tersembunyi)
+- [x] Toggle bahasa ID/EN (navbar + `lang`)
+- [x] Section Timeline `git log --graph` (data di `src/data/timeline.js`)
+- [x] Mode CRT retro (`crt on|off`, `theme crt`)
+- [x] Sound effects Web Audio (default mati, tombol navbar + `sound`)
+- [x] Terminal power-up: `neofetch`, `cv`, `matrix`, `cowsay`, `weather`, `hack`
+

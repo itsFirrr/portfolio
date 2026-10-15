@@ -9,20 +9,28 @@ import { initTilt } from './modules/tilt.js';
 import { initProjects } from './modules/projects.js';
 import { initTheme } from './modules/theme.js';
 import { initTerminal } from './modules/terminal.js';
+import { initI18n } from './modules/i18n.js';
+import { initSound } from './modules/sound.js';
+import { initTimeline } from './modules/timeline.js';
+import { initGithub } from './modules/github.js';
 
 document.getElementById('year').textContent = String(new Date().getFullYear());
 
-// Kritis untuk tampilan awal
+// Kritis untuk tampilan awal (i18n dulu: modul lain merender teks lewat t())
+initI18n();
 initTheme();
+initSound();
 initNav();
 initMarquee();
 initProjects();
+initTimeline();
 initScroll();
 initHero();
 initMatrix();
 initStats();
 initTilt();
 initTerminal();
+initGithub();
 
 const idle = (fn) =>
   'requestIdleCallback' in window ? requestIdleCallback(fn, { timeout: 2000 }) : setTimeout(fn, 600);

@@ -4,6 +4,7 @@ import { projects, GITHUB_URL, isTodo } from '../data/projects.js';
 import { prefersReducedMotion } from '../utils/reducedMotion.js';
 import { initTilt } from './tilt.js';
 import { stopScroll, startScroll } from './scroll.js';
+import { t, localized, onLangChange } from './i18n.js';
 
 const esc = (s) =>
   String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -15,13 +16,13 @@ function cardHtml(p) {
     <li class="card project-card" data-tilt data-reveal>
       <div class="project-card__thumb thumb--${p.thumb}" aria-hidden="true"><span>${esc(p.glyph)}</span></div>
       <div class="project-card__body">
-        <h3 class="project-card__title">${esc(p.title)}</h3>
-        <p class="project-card__desc">${esc(p.short)}</p>
+        <h3 class="project-card__title">${esc(localized(p, 'title'))}</h3>
+        <p class="project-card__desc">${esc(localized(p, 'short'))}</p>
         <p class="tags">${tagsHtml(p.tech)}</p>
         <div class="project-card__footer">
           <span class="text-muted">${p.live ? '● live' : '○ repo'}</span>
           <button type="button" class="project-card__open" data-project="${esc(p.id)}" aria-haspopup="dialog">
-            open --detail <span class="sr-only">${esc(p.title)}</span>
+            open --detail <span class="sr-only">${esc(localized(p, 'title'))}</span>
           </button>
         </div>
       </div>
@@ -39,7 +40,7 @@ drwxr-xr-x  warpro/
 drwxr-xr-x  kalender-pnl/
 drwxr-xr-x  ...</pre>
         <h3 class="project-card__title">More on GitHub</h3>
-        <p class="project-card__desc">Eksperimen, tugas kuliah, dan proyek lain.</p>
+        <p class="project-card__desc">${t('proj.more')}</p>
         <a href="${GITHUB_URL}" target="_blank" rel="noopener" class="text-neon">github.com/itsFirrr →</a>
       </div>
     </li>`;
@@ -48,7 +49,7 @@ drwxr-xr-x  ...</pre>
 function linkBtn(label, url, primary) {
   if (!url) return '';
   if (isTodo(url)) {
-    return `<a class="btn btn--ghost is-todo" href="${GITHUB_URL}" target="_blank" rel="noopener" data-todo="${esc(url)}">${label} (lihat GitHub)</a>`;
+    return `<a class="btn btn--ghost is-todo" href="${GITHUB_URL}" target="_blank" rel="noopener" data-todo="${esc(url)}">${label} (${t('proj.seeGithub')})</a>`;
   }
   return `<a class="btn ${primary ? 'btn--primary' : 'btn--ghost'}" href="${esc(url)}" target="_blank" rel="noopener">${label} ↗</a>`;
 }
@@ -105,8 +106,8 @@ function initModal() {
     opener = button;
     originCard = button.closest('.project-card');
     els.file.textContent = project.file;
-    els.title.textContent = project.title;
-    els.desc.textContent = project.description;
+    els.title.textContent = localized(project, 'title');
+    els.desc.textContent = localized(project, 'description');
     els.tags.innerHTML = tagsHtml(project.tech);
     els.actions.innerHTML = linkBtn('Live', project.live, true) + linkBtn('Repo', project.repo, !project.live);
 
@@ -158,8 +159,19 @@ function initModal() {
 export function initProjects() {
   const grid = document.getElementById('project-grid');
   if (!grid) return;
-  grid.innerHTML = projects.map(cardHtml).join('') + moreCardHtml();
-  initTilt(grid);
+  const render = () => {
+    grid.innerHTML = projects.map(cardHtml).join('') + moreCardHtml();
+    initTilt(grid);
+  };
+  render();
+  onLangChange(() => {
+    render();
+    // Kartu hasil render ulang langsung tampil (scroll reveal hanya sekali)
+    grid.querySelectorAll('[data-reveal]').forEach((el) => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+  });
 
   const modal = initModal();
   grid.addEventListener('click', (e) => {

@@ -1,4 +1,4 @@
-// Ganti tema aksen (green | cyan | magenta). Dipakai perintah `theme` dan Konami code.
+// Ganti tema aksen (green | cyan | magenta) dan mode CRT. Dipakai perintah `theme`/`crt` dan Konami code.
 import { matrixRefreshColor } from './matrix.js';
 
 export const THEMES = ['green', 'cyan', 'magenta'];
@@ -26,7 +26,29 @@ export function cycleTheme() {
   return next;
 }
 
+const CRT_KEY = 'itsfirrr-crt';
+
+export function isCrt() {
+  return document.documentElement.classList.contains('crt');
+}
+
+/** Mode CRT retro: scanline + vignette (lihat .crt di main.css). */
+export function setCrt(on) {
+  document.documentElement.classList.toggle('crt', Boolean(on));
+  try {
+    localStorage.setItem(CRT_KEY, on ? '1' : '0');
+  } catch {
+    /* storage tidak tersedia */
+  }
+  return Boolean(on);
+}
+
 export function initTheme() {
+  try {
+    if (localStorage.getItem(CRT_KEY) === '1') document.documentElement.classList.add('crt');
+  } catch {
+    /* abaikan */
+  }
   let saved = null;
   try {
     saved = localStorage.getItem('itsfirrr-theme');

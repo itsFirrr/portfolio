@@ -1,11 +1,13 @@
 // Vibe coding: panel prompt AI mengetik permintaan, lalu editor palsu mengetik kode sendiri (loop).
 // Lazy via IntersectionObserver; berhenti saat tidak terlihat atau tab tidak aktif.
 import { prefersReducedMotion } from '../utils/reducedMotion.js';
+import { t, localized } from './i18n.js';
 
 const SNIPPETS = [
   {
     file: 'dryer.ino',
     prompt: 'Buat fungsi untuk membaca suhu dari sensor dan kirim ke Firebase tiap 5 detik.',
+    en: { prompt: 'Write a function that reads temperature from a sensor and sends it to Firebase every 5 seconds.' },
     code: `// Kanrung Tech: monitoring pengering cengkeh
 #include <WiFi.h>
 #include <Firebase_ESP_Client.h>
@@ -24,6 +26,7 @@ void loop() {
   {
     file: 'Cashier.php',
     prompt: 'Tambahkan method checkout di Livewire yang mengurangi stok dan mencatat hutang bila belum lunas.',
+    en: { prompt: 'Add a Livewire checkout method that decrements stock and records debt if not fully paid.' },
     code: `// WarPro: checkout kasir
 public function checkout()
 {
@@ -42,6 +45,7 @@ public function checkout()
   {
     file: 'pnl_provider.dart',
     prompt: 'Hitung total P/L bulan ini dari jurnal trading pakai Riverpod.',
+    en: { prompt: "Compute this month's total P/L from the trading journal using Riverpod." },
     code: `// Kalender PNL: total profit/loss bulanan
 final monthlyPnl = Provider<double>((ref) {
   final trades = ref.watch(tradesProvider);
@@ -102,8 +106,8 @@ export function initEditor() {
 
   const showStatic = (s) => {
     tabEl.textContent = s.file;
-    promptEl.textContent = s.prompt;
-    statusEl.innerHTML = `Selesai. <span class="text-cyan">${s.file}</span> siap direview.`;
+    promptEl.textContent = localized(s, 'prompt');
+    statusEl.innerHTML = t('vibe.done', { file: `<span class="text-cyan">${s.file}</span>` });
     renderCode(s.code, false);
   };
 
@@ -146,13 +150,13 @@ export function initEditor() {
       renderCode('', true);
       statusEl.textContent = '…';
       promptEl.textContent = '';
-      for (const ch of s.prompt) {
+      for (const ch of localized(s, 'prompt')) {
         promptEl.textContent += ch;
         await sleep(22 + Math.random() * 30);
       }
       statusEl.innerHTML = 'Thinking<span class="text-neon">…</span>';
       await sleep(700);
-      statusEl.innerHTML = `Menulis <span class="text-cyan">${s.file}</span>…`;
+      statusEl.innerHTML = t('vibe.writing', { file: `<span class="text-cyan">${s.file}</span>` });
       let typed = '';
       for (const ch of s.code) {
         typed += ch;
@@ -161,7 +165,7 @@ export function initEditor() {
         await sleep(ch === '\n' ? 90 + Math.random() * 120 : 12 + Math.random() * 38);
       }
       renderCode(typed, false);
-      statusEl.innerHTML = `Selesai. <span class="text-cyan">${s.file}</span> siap direview. <span class="text-neon">✓</span>`;
+      statusEl.innerHTML = `${t('vibe.done', { file: `<span class="text-cyan">${s.file}</span>` })} <span class="text-neon">✓</span>`;
       await sleep(3200);
       idx++;
     }

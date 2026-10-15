@@ -1,4 +1,5 @@
 // Navbar status-bar: hamburger mobile + highlight section aktif.
+import { t, onLangChange } from './i18n.js';
 export function initNav() {
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('nav-menu');
@@ -7,8 +8,11 @@ export function initNav() {
   const setOpen = (open) => {
     menu.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Tutup menu' : 'Buka menu');
+    toggle.setAttribute('aria-label', t(open ? 'a11y.menuClose' : 'a11y.menu'));
   };
+
+  setOpen(false);
+  onLangChange(() => setOpen(toggle.getAttribute('aria-expanded') === 'true'));
 
   toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
   menu.addEventListener('click', (e) => {

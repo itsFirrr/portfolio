@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import { stopScroll, startScroll } from '../scroll.js';
 import { prefersReducedMotion } from '../../utils/reducedMotion.js';
 import { GAME_LIST } from '../../data/games.js';
+import { sfx } from '../sound.js';
 
 // Loader tiap game; metadata (judul, deskripsi) ada di src/data/games.js
 const LOADERS = {
@@ -28,6 +29,11 @@ function readBest() {
   } catch {
     return {};
   }
+}
+
+function isBestPreview(id, score) {
+  const prev = readBest()[id];
+  return prev === undefined || score > prev;
 }
 
 function saveBest(id, score) {
@@ -159,7 +165,10 @@ function makeApi(meta, stage, cleanups) {
   const api = {
     reducedMotion: prefersReducedMotion(),
     color: (token) => css.getPropertyValue(token).trim(),
+    sfx,
     setScore(n) {
+      // Bunyi "coin" tiap skor naik (dibatasi oleh sound.js; mati bila suara off)
+      if (n > Number(ui.score.textContent)) sfx('coin');
       ui.score.textContent = String(n);
     },
     /** Daftarkan keydown di window; panah/spasi tidak menggulir halaman. */
@@ -231,6 +240,7 @@ function makeApi(meta, stage, cleanups) {
     gameOver(score, message = 'game over') {
       if (!running) return;
       running = false;
+      sfx(isBestPreview(meta.id, score) ? 'success' : 'over');
       const isBest = saveBest(meta.id, score);
       ui.best.textContent = String(readBest()[meta.id] ?? score);
       const over = document.createElement('div');
