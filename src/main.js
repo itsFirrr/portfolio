@@ -7,6 +7,7 @@ import { initStats } from './modules/stats.js';
 import { initMarquee } from './modules/marquee.js';
 import { initTilt } from './modules/tilt.js';
 import { initProjects } from './modules/projects.js';
+import { initEditor } from './modules/editor.js';
 
 document.getElementById('year').textContent = String(new Date().getFullYear());
 
@@ -18,3 +19,4 @@ initHero();
 initMatrix();
 initStats();
 initTilt();
+initEditor();

@@ -44,9 +44,9 @@ Kerjakan berurutan. Centang `[x]` setelah selesai dan verifikasi dengan `npm run
 - [x] Link placeholder ditandai `TODO_LINK_REPO`
 
 ## Fase 6 — Vibe Coding
-- [ ] Jendela editor palsu: tab, nomor baris, highlight sederhana
-- [ ] Panel prompt AI yang mengetik, lalu kode mengetik sendiri (loop)
-- [ ] Layout responsif (vertikal di mobile)
+- [x] Jendela editor palsu: tab, nomor baris, highlight sederhana
+- [x] Panel prompt AI yang mengetik, lalu kode mengetik sendiri (loop)
+- [x] Layout responsif (vertikal di mobile)
 
 ## Fase 7 — Contact dan Terminal Interaktif
 - [ ] Terminal input dengan command: help, about, skills, projects, contact, github, theme, clear, sudo
