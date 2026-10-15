@@ -21,3 +21,4 @@ Build command `npm run build`, publish directory `dist` (sudah diatur di `netlif
 - Token aksen `--accent`/`--accent-2` ditambahkan supaya perintah `theme` dan Konami code bisa mengganti warna tema tanpa mengubah komponen.
 - Fase 1 dan 2 di-commit bersama karena kerangka HTML dan fondasi CSS saling bergantung.
 - Konten statis (hero, about, skills, vibe, contact) ditulis langsung di HTML agar terbaca tanpa JS; daftar proyek dirender dari `src/data/projects.js` dengan `<noscript>` fallback berisi link proyek.
+- Boot screen hanya tampil sekali per sesi browser (sessionStorage) dan dilewati total saat `prefers-reduced-motion`, agar kunjungan ulang tidak terhambat.

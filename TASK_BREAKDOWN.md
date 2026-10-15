@@ -25,12 +25,12 @@ Kerjakan berurutan. Centang `[x]` setelah selesai dan verifikasi dengan `npm run
 - [x] Kerangka 6 section (id: hero, about, skills, projects, vibe, contact) + footer
 
 ## Fase 3 — Hero
-- [ ] Jendela terminal dengan typewriter `whoami`
-- [ ] Scramble text untuk nama
-- [ ] Role rotator (typewriter + hapus)
-- [ ] Matrix rain canvas (30 fps, dibatasi di mobile, pause saat tidak terlihat)
-- [ ] Tombol CTA
-- [ ] Boot screen opsional + tombol skip
+- [x] Jendela terminal dengan typewriter `whoami`
+- [x] Scramble text untuk nama
+- [x] Role rotator (typewriter + hapus)
+- [x] Matrix rain canvas (30 fps, dibatasi di mobile, pause saat tidak terlihat)
+- [x] Tombol CTA
+- [x] Boot screen opsional + tombol skip
 
 ## Fase 4 — About dan Skills
 - [ ] About: teks gaya terminal + kartu stats (counter) dengan nilai placeholder `TODO_`
