@@ -49,10 +49,10 @@ Kerjakan berurutan. Centang `[x]` setelah selesai dan verifikasi dengan `npm run
 - [x] Layout responsif (vertikal di mobile)
 
 ## Fase 7 — Contact dan Terminal Interaktif
-- [ ] Terminal input dengan command: help, about, skills, projects, contact, github, theme, clear, sudo
-- [ ] Riwayat (panah atas/bawah) dan autocomplete Tab
-- [ ] Tombol kontak fallback (email, GitHub, Instagram, LinkedIn) dengan placeholder `TODO_`
-- [ ] Opsional: Netlify Forms
+- [x] Terminal input dengan command: help, about, skills, projects, contact, github, theme, clear, sudo
+- [x] Riwayat (panah atas/bawah) dan autocomplete Tab
+- [x] Tombol kontak fallback (email, GitHub, Instagram, LinkedIn) dengan placeholder `TODO_`
+- [x] Opsional: Netlify Forms (dilewati, lihat Catatan Keputusan)
 
 ## Fase 8 — Efek Global dan Easter Egg
 - [ ] Custom cursor glow (desktop)

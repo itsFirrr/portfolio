@@ -24,3 +24,6 @@ Build command `npm run build`, publish directory `dist` (sudah diatur di `netlif
 - Boot screen hanya tampil sekali per sesi browser (sessionStorage) dan dilewati total saat `prefers-reduced-motion`, agar kunjungan ulang tidak terhambat.
 - Placeholder repo dibuat spesifik per proyek (`TODO_LINK_REPO_WARPRO`, `TODO_LINK_REPO_KALENDER_PNL`) agar mudah dicari. Selama masih placeholder, tombol Repo di modal diarahkan ke profil GitHub dan diberi gaya putus-putus.
 - Kartu proyek memakai satu `<button>` "open --detail" yang area kliknya diperluas ke seluruh kartu, sehingga tetap satu tab-stop per kartu untuk keyboard.
+- Netlify Forms (opsional) tidak dipakai: terminal interaktif + tombol kontak sudah cukup, dan email masih placeholder sehingga form belum punya tujuan yang jelas.
+- Tab di terminal hanya ditahan untuk autocomplete bila input berisi teks; saat kosong, Tab tetap memindahkan fokus agar keyboard tidak terjebak.
+- Pilihan tema (`theme`) disimpan di localStorage per pengunjung.

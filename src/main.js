@@ -8,9 +8,12 @@ import { initMarquee } from './modules/marquee.js';
 import { initTilt } from './modules/tilt.js';
 import { initProjects } from './modules/projects.js';
 import { initEditor } from './modules/editor.js';
+import { initTerminal } from './modules/terminal.js';
+import { initTheme } from './modules/theme.js';
 
 document.getElementById('year').textContent = String(new Date().getFullYear());
 
+initTheme();
 initNav();
 initMarquee();
 initProjects();
@@ -20,3 +23,4 @@ initMatrix();
 initStats();
 initTilt();
 initEditor();
+initTerminal();
