@@ -10,6 +10,8 @@ import { initProjects } from './modules/projects.js';
 import { initEditor } from './modules/editor.js';
 import { initTerminal } from './modules/terminal.js';
 import { initTheme } from './modules/theme.js';
+import { initCursor } from './modules/cursor.js';
+import { initKonami } from './modules/konami.js';
 
 document.getElementById('year').textContent = String(new Date().getFullYear());
 
@@ -24,3 +26,5 @@ initStats();
 initTilt();
 initEditor();
 initTerminal();
+initCursor();
+initKonami();

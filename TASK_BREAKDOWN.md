@@ -55,9 +55,9 @@ Kerjakan berurutan. Centang `[x]` setelah selesai dan verifikasi dengan `npm run
 - [x] Opsional: Netlify Forms (dilewati, lihat Catatan Keputusan)
 
 ## Fase 8 — Efek Global dan Easter Egg
-- [ ] Custom cursor glow (desktop)
-- [ ] Konami code easter egg
-- [ ] Transisi dan polish antar section
+- [x] Custom cursor glow (desktop)
+- [x] Konami code easter egg
+- [x] Transisi dan polish antar section
 
 ## Fase 9 — Optimasi dan QA
 - [ ] Terapkan `prefers-reduced-motion` di semua animasi

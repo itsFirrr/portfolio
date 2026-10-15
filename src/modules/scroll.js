@@ -80,6 +80,19 @@ function initReveal() {
   });
 }
 
+/** Transisi antar section: jendela hero memudar & naik sedikit saat discroll (scrub). */
+function initSectionTransitions() {
+  if (prefersReducedMotion()) return;
+  const win = document.querySelector('.hero__window');
+  if (!win) return;
+  gsap.to(win, {
+    y: -60,
+    opacity: 0.25,
+    ease: 'none',
+    scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true },
+  });
+}
+
 /** Tautan anchor internal memakai scrollToTarget supaya konsisten dengan Lenis. */
 function initAnchors() {
   document.addEventListener('click', (e) => {
@@ -104,5 +117,6 @@ export function initScroll() {
   initLenis();
   initProgress();
   initReveal();
+  initSectionTransitions();
   initAnchors();
 }

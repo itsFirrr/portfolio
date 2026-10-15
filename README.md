@@ -27,3 +27,4 @@ Build command `npm run build`, publish directory `dist` (sudah diatur di `netlif
 - Netlify Forms (opsional) tidak dipakai: terminal interaktif + tombol kontak sudah cukup, dan email masih placeholder sehingga form belum punya tujuan yang jelas.
 - Tab di terminal hanya ditahan untuk autocomplete bila input berisi teks; saat kosong, Tab tetap memindahkan fokus agar keyboard tidak terjebak.
 - Pilihan tema (`theme`) disimpan di localStorage per pengunjung.
+- Konami code (↑ ↑ ↓ ↓ ← → ← → B A) men-toggle tema magenta, memicu Matrix "burst" dan glitch nama. Diabaikan saat fokus di input terminal.
