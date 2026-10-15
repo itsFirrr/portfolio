@@ -1608,6 +1608,11 @@ kbd {
   box-shadow: var(--glow-cyan);
 }
 
+.log__item--work .log__dot {
+  border-color: var(--neon-magenta);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--neon-magenta) 55%, transparent);
+}
+
 .log__item--org .log__dot {
   border-color: var(--warn);
   box-shadow: none;

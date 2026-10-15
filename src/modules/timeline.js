@@ -17,7 +17,8 @@ function render(list) {
   list.innerHTML = timeline
     .map((item, i) => {
       const title = esc(localized(item, 'title'));
-      const date = isTodo(item.date) ? `<span class="text-warn">${esc(item.date)}</span>` : esc(item.date);
+      const rawDate = localized(item, 'date');
+      const date = isTodo(rawDate) ? `<span class="text-warn">${esc(rawDate)}</span>` : esc(rawDate);
       const head = i === 0 ? ` <span class="log__ref">(HEAD -&gt; main)</span>` : '';
       return `
         <li class="log__item log__item--${item.type}" data-reveal>

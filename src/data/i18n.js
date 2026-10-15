@@ -73,6 +73,7 @@ const id = {
   'wx.error': 'weather: gagal mengambil data cuaca. Coba lagi nanti.',
 
   // Timeline, GitHub, projects, vibe
+  'log.work': 'work',
   'log.feat': 'feat',
   'log.edu': 'edu',
   'log.org': 'org',
@@ -157,6 +158,7 @@ const en = {
   'wx.source': 'data: open-meteo.com',
   'wx.error': 'weather: failed to fetch weather data. Try again later.',
 
+  'log.work': 'work',
   'log.feat': 'feat',
   'log.edu': 'edu',
   'log.org': 'org',
@@ -178,7 +180,7 @@ const en = {
     'D-4 Computer & Network Engineering student at Politeknik Negeri Ujung Pandang (PNUP). I love connecting hardware and software: from ESP32 and Firebase, Android apps with Kotlin/Compose, to the web with Laravel.',
   'about.p3':
     'As a <span class="text-cyan">vibe coder</span>, I use AI as a pair-programming partner to move fast, then make sure the result stays clean, tested, and usable by real people.',
-  'about.status': '// status: open to internships, collaborations, and freelance projects.',
+  'about.status': '// status: currently interning at PT PLN Icon Plus; open to collaborations and freelance projects.',
   'stat.projects': 'main projects',
   'stat.tech': 'core technologies',
   'stat.years': 'years of coding',
