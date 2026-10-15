@@ -38,10 +38,10 @@ Kerjakan berurutan. Centang `[x]` setelah selesai dan verifikasi dengan `npm run
 - [x] Scroll reveal dengan stagger
 
 ## Fase 5 — Projects
-- [ ] `src/data/projects.js` berisi 4 proyek (lihat PRD bagian 5b) + kartu "More on GitHub"
-- [ ] Render kartu dari data, hover glow dan tilt
-- [ ] Modal detail (animasi, Esc untuk tutup, focus trap)
-- [ ] Link placeholder ditandai `TODO_LINK_REPO`
+- [x] `src/data/projects.js` berisi 4 proyek (lihat PRD bagian 5b) + kartu "More on GitHub"
+- [x] Render kartu dari data, hover glow dan tilt
+- [x] Modal detail (animasi, Esc untuk tutup, focus trap)
+- [x] Link placeholder ditandai `TODO_LINK_REPO`
 
 ## Fase 6 — Vibe Coding
 - [ ] Jendela editor palsu: tab, nomor baris, highlight sederhana

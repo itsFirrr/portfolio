@@ -6,11 +6,13 @@ import { initMatrix } from './modules/matrix.js';
 import { initStats } from './modules/stats.js';
 import { initMarquee } from './modules/marquee.js';
 import { initTilt } from './modules/tilt.js';
+import { initProjects } from './modules/projects.js';
 
 document.getElementById('year').textContent = String(new Date().getFullYear());
 
 initNav();
 initMarquee();
+initProjects();
 initScroll();
 initHero();
 initMatrix();
