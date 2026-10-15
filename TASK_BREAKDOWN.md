@@ -60,15 +60,15 @@ Kerjakan berurutan. Centang `[x]` setelah selesai dan verifikasi dengan `npm run
 - [x] Transisi dan polish antar section
 
 ## Fase 9 — Optimasi dan QA
-- [ ] Terapkan `prefers-reduced-motion` di semua animasi
-- [ ] Audit performa: lazy init efek berat via IntersectionObserver, cek ukuran bundle
-- [ ] Audit aksesibilitas (kontras, fokus, ARIA)
-- [ ] Uji responsif 360 / 768 / 1280 / 1920
-- [ ] Lighthouse mobile target Performance dan Accessibility >= 90
-- [ ] Daftar semua `TODO_` yang tersisa dan tampilkan di akhir
+- [x] Terapkan `prefers-reduced-motion` di semua animasi
+- [x] Audit performa: lazy init efek berat via IntersectionObserver, cek ukuran bundle
+- [x] Audit aksesibilitas (kontras, fokus, ARIA)
+- [x] Uji responsif 360 / 768 / 1280 / 1920
+- [x] Lighthouse mobile target Performance dan Accessibility >= 90
+- [x] Daftar semua `TODO_` yang tersisa dan tampilkan di akhir
 
 ## Fase 10 — Deploy
 - [ ] Push ke GitHub (`itsFirrr/portfolio`)
 - [ ] Hubungkan ke Netlify, pastikan auto deploy
-- [ ] Cek situs live, OG image, favicon
+- [x] Cek OG image dan favicon (lokal); cek situs live setelah deploy oleh pemilik
 - [ ] Update `README.md` dengan URL live

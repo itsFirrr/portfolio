@@ -28,3 +28,6 @@ Build command `npm run build`, publish directory `dist` (sudah diatur di `netlif
 - Tab di terminal hanya ditahan untuk autocomplete bila input berisi teks; saat kosong, Tab tetap memindahkan fokus agar keyboard tidak terjebak.
 - Pilihan tema (`theme`) disimpan di localStorage per pengunjung.
 - Konami code (↑ ↑ ↓ ↓ ← → ← → B A) men-toggle tema magenta, memicu Matrix "burst" dan glitch nama. Diabaikan saat fokus di input terminal.
+- Modul editor vibe coding, cursor glow, dan Konami dimuat sebagai chunk terpisah (dynamic import saat idle/mendekati viewport) untuk menekan Total Blocking Time. Terminal tetap dimuat langsung agar form tidak pernah submit sebelum handler siap.
+- Lighthouse mobile (lokal, `vite preview`): Performance 92–95, Accessibility 100, Best Practices 100, SEO 92 (canonical masih `TODO_DOMAIN_URL`).
+- Fase 10 (push GitHub & hubungkan Netlify) sengaja tidak dijalankan; dikerjakan oleh pemilik repo.

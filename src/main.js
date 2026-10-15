@@ -7,14 +7,12 @@ import { initStats } from './modules/stats.js';
 import { initMarquee } from './modules/marquee.js';
 import { initTilt } from './modules/tilt.js';
 import { initProjects } from './modules/projects.js';
-import { initEditor } from './modules/editor.js';
-import { initTerminal } from './modules/terminal.js';
 import { initTheme } from './modules/theme.js';
-import { initCursor } from './modules/cursor.js';
-import { initKonami } from './modules/konami.js';
+import { initTerminal } from './modules/terminal.js';
 
 document.getElementById('year').textContent = String(new Date().getFullYear());
 
+// Kritis untuk tampilan awal
 initTheme();
 initNav();
 initMarquee();
@@ -24,7 +22,28 @@ initHero();
 initMatrix();
 initStats();
 initTilt();
-initEditor();
 initTerminal();
-initCursor();
-initKonami();
+
+const idle = (fn) =>
+  'requestIdleCallback' in window ? requestIdleCallback(fn, { timeout: 2000 }) : setTimeout(fn, 600);
+
+/** Muat modul secara lazy saat elemen mendekati viewport (chunk terpisah, tidak membebani load awal). */
+function whenNear(id, load) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const io = new IntersectionObserver(
+    ([entry]) => {
+      if (!entry.isIntersecting) return;
+      io.disconnect();
+      load();
+    },
+    { rootMargin: '400px 0px' },
+  );
+  io.observe(el);
+}
+
+whenNear('vibe', () => import('./modules/editor.js').then((m) => m.initEditor()));
+idle(() => {
+  import('./modules/cursor.js').then((m) => m.initCursor());
+  import('./modules/konami.js').then((m) => m.initKonami());
+});
